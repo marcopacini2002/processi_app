@@ -23,6 +23,14 @@ namespace processi_app
             app.Start();
             app.PriorityClass = ProcessPriorityClass.RealTime;
             app.WaitForExit();
+
+            var process = Process.GetProcesses();
+            foreach(var p in process)
+            {
+                if (p.ProcessName == "Notepad") p.Kill();
+            }
+            Console.WriteLine("Programma terminato");
+            Console.ReadLine();
         }
     }
 }
